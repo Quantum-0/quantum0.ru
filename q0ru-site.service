@@ -1,0 +1,17 @@
+# cp this to /etc/systemd/system/&& systemctl enable q0ru-site.service && sudo service q0ru-site start
+
+[Unit]
+Description=Quantum0ruSite
+After=syslog.target
+After=network.target
+After=nginx.service
+#After=couchdb.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/quantum0.ru/app.py
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=default.target
