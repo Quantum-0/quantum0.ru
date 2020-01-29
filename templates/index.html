@@ -19,6 +19,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 </style>
 <body>
 
+<div id="idFaRedirect" class="w3-modal w3-animate-opacity">
+	<div class="w3-modal-content w3-card-4 w3-display-middle" style="min-width:250px; max-width:30%">
+	  <header class="w3-container w3-red"> 
+	    <span onclick="document.getElementById('idFaRedirect').style.display='none'" 
+	    class="w3-button w3-large w3-display-topright">&times;</span>
+	    <h3>Warning</h3>
+	  </header>
+	  <div class="w3-container">
+	    <p>Site contains NSFW content, are you sure you want to continue?</p>
+	  </div>
+	  <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+	    <button onclick="document.getElementById('idFaRedirect').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+	    <button onclick="location.href = 'https://www.furaffinity.net/user/quantum0/'" type="button" class="w3-button w3-red w3-right">Continue</button>
+	  </div>
+	</div>
+</div>
+
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-topleft w3-padding-large w3-xlarge">
   </div>
@@ -55,8 +72,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 		  <div class="w3-container w3-mobile w3-cell w3-hover-opacity" onclick="location.href = 'https://www.youtube.com/channel/UCoE1dyWYUsSa3yiUMnqor0g/videos'">
 			<i class='fab fa-youtube'></i>
 		  </div>
-		  <!-- TODO: Show dialog "Site contains NSFW content, are you sure you want to continue? -->
-		  <div class="w3-container w3-mobile w3-cell w3-hover-opacity" onclick="location.href = 'https://www.furaffinity.net/user/quantum0/'">
+		  <div class="w3-container w3-mobile w3-cell w3-hover-opacity" onclick="document.getElementById('idFaRedirect').style.display='block'" class="w3-button w3-black">
 			<i class='fas fa-paw'></i><!-- Furaffinity-->
 		  </div>
 		  <div class="w3-container w3-mobile w3-cell w3-hover-opacity" onclick="location.href = 'https://www.facebook.com/profile.php?id=100006596971509'">
