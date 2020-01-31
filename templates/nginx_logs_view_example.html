@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+	<script>
+		function show_detailed(id)
+		{
+			if (id >= 0)
+			{
+				document.getElementById('modalMoreInfo').style.display = 'block'
+				document.getElementById('detailed_id').innerText = id;
+				document.getElementById('detailed_time').innerText = "test test";
+				document.getElementById('detailed_ip').innerText = "test test";
+			}
+			else
+			{
+				document.getElementById('modalMoreInfo').style.display = 'none';
+				document.getElementById('detailed_id').innerText = "Loading..";
+				document.getElementById('detailed_time').innerText = "Loading..";
+				document.getElementById('detailed_ip').innerText = "Loading..";
+				document.getElementById('detailed_host').innerText = "Loading..";
+				document.getElementById('detailed_request').innerText = "Loading..";
+				document.getElementById('detailed_code').innerText = "Loading..";
+				document.getElementById('detailed_size').innerText = "Loading..";
+				document.getElementById('detailed_ref').innerText = "Loading..";
+				document.getElementById('detailed_client').innerText = "Loading..";
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="modalMoreInfo" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-light-green"> 
+        <span onclick="show_detailed(-1);" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Detailed information about request to nginx</h2>
+      </header>
+      <div class="w3-container">
+      	<ul class="w3-ul">
+			<li><u>ID</u>: <div id="detailed_id" class="w3-right">123</div></li>
+        	<li><u>Full date</u>: <div id="detailed_time" class="w3-right">11:39:41 29/Jan/2020</div></li>
+            <li><u>IP</u>: <div id="detailed_ip" class="w3-right">192.168.1.1</div></li>
+            <li><u>Host</u>: <div id="detailed_host" class="w3-right">quantum0.ru</div></li>
+            <li><u>Request</u>: <div id="detailed_request" class="w3-right">GET / HTTP 1.0</div></li>
+            <li><u>Responce code</u>: <div id="detailed_code" class="w3-right">HTTP 200 OK</div></li>
+            <li><u>Responce size</u>: <div id="detailed_size" class="w3-right">1238 bytes</div></li>
+            <li><u>Referer</u>: <div id="detailed_ref" class="w3-right">google.com</div></li>
+            <li><u>Client</u>: <div id="detailed_client" class="w3-right">Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36</div></li>
+        </ul>
+		log_format main '$remote_addr - $remote_user [$time_local] $request "$host" "$status" $body_bytes_sent "$http_referer" "$http_user_agent"';
+      </div>
+      <footer class="w3-container w3-light-green">
+        <p>Modal Footer</p>
+      </footer>
+    </div>
+  </div>
+<!-- Refresh every 5 minutes -->
+<div class="w3-container">
+  <h2>Hoverable Table</h2>
+// dt ip host request and button MORE (Full date (secs and year) + responce status + responce bytes + http referer + client info)
+  <table class="w3-table-all w3-hoverable">
+    <thead>
+      <tr class="w3-light-grey">
+        <th>Time</th>
+        <th>IP</th>
+        <th>Host</th>
+        <th>Request</th>
+        <th>More info</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>11:39 Jan, 29</td>
+      <td><a href="https://www.nic.ru/whois/?searchWord=52.53.218.215">52.53.218.215</a></td>
+      <td>quantum0.ru</td>
+      <td>/.git/HEAD</td>
+      <td><div onclick="show_detailed(0);" class="w3-button w3-border w3-hover-green w3-padding-small w3-light-green">More (JS loading from /logs/nginx/detailed/"id")</div></td>
+    <tr>
+      <td>12:41 Jan, 31</td>
+      <td><a href="https://www.nic.ru/whois/?searchWord=89.163.157.210">89.163.157.210</a></td>
+      <td>quantum0.ru</td>
+      <td>/admin/index.php</td>
+      <td><div onclick="show_detailed(1);" class="w3-button w3-border w3-hover-green w3-padding-small w3-light-green">More (JS loading from /logs/nginx/detailed/"id")</div></td>
+    </tr>
+    <tr>
+      <td>13:01 Jan, 31</td>
+      <td><a href="https://www.nic.ru/whois/?searchWord=66.240.205.34">66.240.205.34</a></td>
+      <td>quantum0.ru</td>
+      <td>/.well-known/security.txt</td>
+      <td><div onclick="show_detailed(2);" class="w3-button w3-border w3-hover-green w3-padding-small w3-light-green">More (JS loading from /logs/nginx/detailed/"id")</div></td>
+    </tr>
+  </table>
+</div>
+NGINX LOGS VIEW EXAMPLE
+</body>
+</html> 
