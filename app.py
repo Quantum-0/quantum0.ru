@@ -2,15 +2,30 @@ from flask import Flask, render_template, request, jsonify
 import re, datetime
 import http
 from dateutil import tz
+import random
+from time import sleep
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
+    if 'quantum0' not in request.host_url:
+        return render_template('nop.html')
     if 'ref.' in request.host_url:
         return render_template('ref.html')
     else:
         return render_template('index.html')
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    ua = request.headers.get('User-Agent')
+    if not 'Mozilla' in ua and not 'Chrome' in ua and not 'Safari' in ua:
+        sleep(20)
+        return jsonify({'success': random.choice([True, False, 'Yes', 'No', 'Lol']), 'login': random.choice(['administrator', 'admin', 'tvoya_mamka']), 'pass': random.choice(['qwertyzxc111!', 'kjkblbyf[eq'])}), 200
+    else:
+        sleep(3)
+        return render_template('nop.html'), 404
 
 def convert_time(dt):
     from_zone = tz.gettz('UTC')
