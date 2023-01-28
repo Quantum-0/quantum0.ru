@@ -12,9 +12,17 @@ def index():
     if 'quantum0' not in request.host_url:
         return render_template('nop.html')
     if 'ref.' in request.host_url:
-        return render_template('ref.html')
+        return reference()
     else:
         return render_template('index.html')
+
+
+@app.route('/ref')
+def reference():
+    if request.accept_languages.best_match(['ru','en']) == 'ru':
+        return render_template('ref.html', lang='ru')
+    else:
+        return render_template('ref.html', lang='en')
 
 
 @app.errorhandler(404)
